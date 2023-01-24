@@ -1,23 +1,66 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-});
+//Time section variables
+$(document).ready(function(){
+  var currentDate = moment().format("MMMM Do, YYYY");
+  var currentTime = moment().format("hh:mm:ss A");
+  var currentHour;
+  var possibleHours = {
+    before: ["12AM","01AM","02AM","03AM","04AM","05AM","06AM","07AM", "08AM"],
+    business: ['09AM',"10AM","11AM","12PM","01PM","02PM","03PM","04PM","O5PM"],
+    after: ["06PM","07PM","08PM","09PM","10PM","11PM"]
+  };
+
+  function init() {
+    //Display current date
+    $("#date").text(currentDate);
+    //Display current time
+    $("#time").text(currentTime);
+    //Colors based on current time
+    timeColor();
+    //Update current date and time every second
+    let currentTimer = setInterval(function() {
+      currentDate = moment().format("MMMM Do, YYYY");
+      $("#date").text(currentDate);
+      currentTime = moment().format("hh:mm:ss A");
+      $("#time").text(currentTime);
+      timeColor();
+    }, 1000);
+    }
+
+
+    // Change text area to a specific color for past, prest and future hours
+    function timeColor(){
+      currentHour = moment().format("hhA");
+      //If currenthours is before 9am set all hours to background color to gray
+      if (possibleHours.before.indexOf(currentHour) !==-1){
+        $(".hourNotes").css("background-color", "#d3d3d3");
+      
+    }
+
+    //if currenthous is between 9 and 5
+    if (possibleHours.business.indexOf(currentHour) !== -1){
+      //set id that matches currenthour to background color to lightblue
+      $("#" + currentHour).css("background-color", "#A1C8E7");
+      //Set hours before currenthour to background-color gray
+      for (let i = 0; i < possibleHours.business.indexOf(currentHour); i++){
+        $("#" + possibleHours.business[i]).css("#background-color"), "#d3d3d3");
+      }
+    // set all hours after currenthour to background color to aqua
+    for (
+      let i = possibleHours.business.length - 1;
+      i > possibleHours.business.indexOf(currentHour);
+      i--
+    ) {
+      $("#" + possibleHours.business[i]).css("background-color", "#88d8c0");
+    }
+    }
+  }
+
+
+
+
+
+
+
+
+
+  }
