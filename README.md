@@ -89,7 +89,7 @@ This Challenge is graded based on the following criteria:
 
 ### Website Screenshot 
 <img src="./assets/screenshot.jpg" 
-alt="screenshot of website>"
+alt="screenshot of website/>"
 
 ### Website Link
 [Work Day Scheduler](https://johnangel999.github.io/Work-Day-Scheduler/)
