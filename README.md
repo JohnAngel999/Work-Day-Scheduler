@@ -87,13 +87,9 @@ This Challenge is graded based on the following criteria:
 
 * Repository contains quality README file with description, screenshot, and link to deployed application
 
-## Review
+### Website Screenshot 
+<img src="./assets/screenshot.jpg" 
+alt="screenshot of website>"
 
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+### Website Link
+[Work Day Scheduler](https://johnangel999.github.io/Work-Day-Scheduler/)
